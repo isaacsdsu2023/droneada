@@ -5,6 +5,8 @@ package com.dronerecon.ws;
         import java.io.*;
         import java.util.*;
         import java.security.SecureRandom;
+        import java.util.HashMap;
+
 
 
 public class DroneDataService extends HttpServlet{
@@ -68,5 +70,30 @@ public class DroneDataService extends HttpServlet{
 
 
     }
+
+
+
+public class SensorDataMap {
+    private HashMap<String, SensorData> sensorDataMap;
+
+    public SensorDataMap() {
+        sensorDataMap = new HashMap<>();
+    }
+
+    // Add sensor data with unique key
+    public void addSensorData(String tileKey, SensorData data) {
+        sensorDataMap.put(tileKey, data);
+    }
+
+    // Get sensor data by tile key
+    public SensorData getSensorData(String tileKey) {
+        return sensorDataMap.get(tileKey);
+    }
+
+    // Check if the map contains data for a specific tile
+    public boolean containsTileData(String tileKey) {
+        return sensorDataMap.containsKey(tileKey);
+    }
+}
 }
 
